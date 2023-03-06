@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -41,4 +42,19 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    //view-model and livedata
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$dep_versions.lifecycle"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$dep_versions.lifecycle"
+
+
+    //retrofit & GSON-converter
+    implementation "com.squareup.retrofit2:retrofit:$dep_versions.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$dep_versions.gson"
+    implementation "com.squareup.okhttp3:okhttp:$dep_versions.okhttp"
+
+    //Kotshi
+    implementation "se.ansman.kotshi:api:$dep_versions.kotshi"
+    kapt "se.ansman.kotshi:compiler:$dep_versions.kotshi"
+
 }

@@ -7,7 +7,11 @@ import retrofit2.http.Query
 
 interface LastFmApi {
 
-    @GET("2.0/")
+    companion object {
+        const val URL = "http://ws.audioscrobbler.com"
+    }
+
+    @GET("/2.0")
     suspend fun getGenres(
         @Query("method") method: String = "tag.getTopTags",
         @Query("api_key") api_key:String,

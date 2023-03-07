@@ -6,8 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object LastFmInstance {
 
     val lastFmApi: LastFmApi by lazy {
-        Retrofit
-            .Builder()
+        Retrofit.Builder()
             .baseUrl(LastFmApi.URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

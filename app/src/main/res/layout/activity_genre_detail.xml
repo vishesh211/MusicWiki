@@ -32,6 +32,37 @@
             android:textColor="@color/purple_200"
             tools:text= "Disco is a genre of dance-oriented music that originated in African American, gay and Hispanic American communities in 1970s. In what is considered a forerunner to disco style clubs in February 1970 New York City DJ David Mancuso opened The Loft, a members-only private dance club set in his own home. Most agree that the first disco songs were released in 1973, though some claim that Soul Makossa by Manu Dibango's from 1972 to be the first disco record. The first article about disco was written in September 1973 by Vince Aletti for Rolling Stone Magazine." />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:labelFor="@+id/albumTab"
+            app:tabIndicatorColor="@color/orange" >
+            
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/albumTab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ALBUMS" />
 
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/artistsTab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ARTISTS" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tracksTab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRACKS" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/detailRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.core.widget.NestedScrollView>

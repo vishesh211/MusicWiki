@@ -1,20 +1,23 @@
 package com.example.lastfmapi.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.lastfmapi.dataclasses.TagX
 import com.example.lastfmapi.repository.LastFmRepository
+import kotlinx.coroutines.launch
 
 class LastFmViewModel(private val LastFmRepository: LastFmRepository): ViewModel() {
 
-//    fun getTopTags() {
-//        viewModelScope.launch {
-//            val response = LastFmApi.getGenres().body()
-//            if (response?.toptags?.tag?.isNotEmpty() == true){
-//                response.toptags.tag.forEach {
-//                    println(it.name)
-//                }
-//            } else{
-//                Log.e("LastFmApi", "Api not working. List size zero!!!!!")
-//            }
-//        }
-//    }
+    private val _topTags: MutableLiveData<List<TagX>> = MutableLiveData()
+    val topTags: LiveData<List<TagX>> = _topTags
+    private fun getTopTags() {
+        viewModelScope.launch {
+            val response = LastFmRepository.getGenres()
+            if (response.isSuccessful){
+                _topTags.value = response.body()?.toptags?.tag
+            }
+        }
+    }
 }

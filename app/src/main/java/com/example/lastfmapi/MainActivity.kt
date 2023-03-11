@@ -1,5 +1,6 @@
 package com.example.lastfmapi
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -54,7 +55,13 @@ class MainActivity : AppCompatActivity() {
             val chip = Chip(this)
             chip.text = tagList[i].name
             chip.setChipBackgroundColorResource(R.color.purple_700)
-            chip.setOnClickListener {  }
+
+            chip.setOnClickListener {
+                val intent = Intent(this, GenreDetailActivity::class.java)
+                intent.putExtra("tag", tagList[i].name)
+                startActivity(intent)
+            }
+
             binding.chipGroup.addView(chip)
         }
     }

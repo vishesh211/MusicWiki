@@ -12,7 +12,7 @@ class LastFmViewModel(private val LastFmRepository: LastFmRepository): ViewModel
 
     private val _topTags: MutableLiveData<List<TagX>> = MutableLiveData()
     val topTags: LiveData<List<TagX>> = _topTags
-    private fun getTopTags() {
+    fun getTopTags() {
         viewModelScope.launch {
             val response = LastFmRepository.getGenres()
             if (response.isSuccessful){

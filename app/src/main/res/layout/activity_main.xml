@@ -4,27 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/toggleLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent">
+        android:layout_marginTop="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/orange"
-            android:text="Start With Choosing A Genre"
+            android:text="Choose a Genre to Start With"
             android:textSize="20sp"
             android:textStyle="bold" />
         
@@ -35,16 +35,16 @@
             android:backgroundTint="@color/purple_200" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-        
+
         <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="@color/black"
-            app:chipSpacingVertical="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toggleLayout" >
+            android:backgroundTint="@color/orange"
+            app:chipSpacingVertical="2dp" >
+
         </com.google.android.material.chip.ChipGroup>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.core.widget.NestedScrollView>

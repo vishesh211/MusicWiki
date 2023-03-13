@@ -1,12 +1,14 @@
 package com.example.lastfmapi
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.lastfmapi.adapters.AlbumsAdapter
 import com.example.lastfmapi.databinding.ActivityGenreDetailBinding
 import com.example.lastfmapi.repository.LastFmRepository
 import com.example.lastfmapi.viewmodel.LastFmViewModel
 import com.example.lastfmapi.viewmodel.LastFmViewModelFactory
+import com.google.android.material.tabs.TabLayout
 
 class GenreDetailActivity : AppCompatActivity() {
 
@@ -29,5 +31,25 @@ class GenreDetailActivity : AppCompatActivity() {
             binding.tagTitle.text = it.name
             binding.tagInfo.text = it.wiki.summary
         }
+
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                if (tab!!.text!! == "ALBUMS"){
+                    viewModel.getTopTags()
+                    viewModel.tagTopAlbums.observe(this@GenreDetailActivity) {
+                        binding.detailRecyclerView.adapter = AlbumsAdapter(it.album)
+                    }
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 }

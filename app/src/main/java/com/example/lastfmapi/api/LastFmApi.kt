@@ -45,4 +45,11 @@ interface LastFmApi {
         @Query("format") format: String = "json"
     ): Response<GetTopArtists>
 
+    @GET("2.0/")
+    suspend fun getTagTopTracks(
+        @Query("method") method: String = "tag.gettoptracks",
+        @Query("tag") tag: String,
+        @Query("api_key") api_key: String = "3ec4da6005c36f71fdc94b95f46869d6",
+        @Query("format") format: String = "json"
+    ): Response<GetTopArtists>
 }

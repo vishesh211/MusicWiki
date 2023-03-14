@@ -41,19 +41,16 @@
             app:tabIndicatorColor="@color/orange" >
             
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/albumTab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ALBUMS" />
 
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/artistsTab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ARTISTS" />
 
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/tracksTab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TRACKS" />

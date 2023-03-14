@@ -3,8 +3,11 @@ package com.example.lastfmapi
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.lastfmapi.adapters.AlbumsAdapter
 import com.example.lastfmapi.databinding.ActivityGenreDetailBinding
+import com.example.lastfmapi.dataclasses.Album
+import com.example.lastfmapi.dataclasses.Albums
 import com.example.lastfmapi.repository.LastFmRepository
 import com.example.lastfmapi.viewmodel.LastFmViewModel
 import com.example.lastfmapi.viewmodel.LastFmViewModelFactory
@@ -14,12 +17,17 @@ class GenreDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGenreDetailBinding
     private lateinit var viewModel: LastFmViewModel
+    var albumList: MutableList<Album> = mutableListOf()
+    var albumsAdapter: AlbumsAdapter = AlbumsAdapter(albumList)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGenreDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val tag = intent.getStringExtra("tag")
+
+        binding.detailRecyclerView.layoutManager = GridLayoutManager(this, 2)
+        binding.detailRecyclerView.adapter = albumsAdapter
 
         val lastFmRepository = LastFmRepository()
         val viewModelFactory = LastFmViewModelFactory(lastFmRepository)
@@ -37,7 +45,8 @@ class GenreDetailActivity : AppCompatActivity() {
                 if (tab!!.text!! == "ALBUMS"){
                     viewModel.getTopTags()
                     viewModel.tagTopAlbums.observe(this@GenreDetailActivity) {
-                        binding.detailRecyclerView.adapter = AlbumsAdapter(it.album)
+                        albumList.addAll(it.album)
+                        binding.detailRecyclerView.adapter = AlbumsAdapter(albumList)
                     }
                 }
             }

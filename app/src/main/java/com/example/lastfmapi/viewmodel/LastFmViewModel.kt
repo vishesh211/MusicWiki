@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.lastfmapi.dataclasses.Albums
-import com.example.lastfmapi.dataclasses.Tag
-import com.example.lastfmapi.dataclasses.TagX
-import com.example.lastfmapi.dataclasses.Topartists
+import com.example.lastfmapi.dataclasses.*
 import com.example.lastfmapi.repository.LastFmRepository
 import kotlinx.coroutines.launch
 
@@ -24,6 +21,9 @@ class LastFmViewModel(private val LastFmRepository: LastFmRepository): ViewModel
 
     private val _tagTopArtists: MutableLiveData<Topartists> = MutableLiveData()
     val tagTopArtists: LiveData<Topartists> = _tagTopArtists
+
+    private val _tagTopTracks: MutableLiveData<Tracks> = MutableLiveData()
+    val tagTopTracks: LiveData<Tracks> = _tagTopTracks
     fun getTopTags() {
         viewModelScope.launch {
             val response = LastFmRepository.getGenres()
@@ -56,6 +56,15 @@ class LastFmViewModel(private val LastFmRepository: LastFmRepository): ViewModel
             val response = LastFmRepository.getTagTopArtists(tag)
             if (response.isSuccessful) {
                 _tagTopArtists.value = response.body()?.topartists
+            }
+        }
+    }
+
+    fun getTagTopTracks(tag: String) {
+        viewModelScope.launch {
+            val response = LastFmRepository.getTagTopTracks(tag)
+            if (response.isSuccessful) {
+                _tagTopTracks.value = response.body()?.tracks
             }
         }
     }

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lastfmapi.dataclasses.Track
 
-class TracksAdapter(val list: MutableList<Track>): RecyclerView.Adapter<TracksAdapter.ViewHolder>() {
+class TracksAdapter(val list: List<Track>): RecyclerView.Adapter<TracksAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

@@ -26,14 +26,20 @@ class GenreDetailActivity : AppCompatActivity() {
 
         val tag = intent.getStringExtra("tag")
 
-        binding.detailRecyclerView.layoutManager = GridLayoutManager(this, 2)
-        binding.detailRecyclerView.adapter = albumsAdapter
 
         val lastFmRepository = LastFmRepository()
         val viewModelFactory = LastFmViewModelFactory(lastFmRepository)
         viewModel = ViewModelProvider(this, viewModelFactory)[LastFmViewModel::class.java]
 
         viewModel.getGenreInfo(tag.toString())
+        viewModel.getTagTopAlbums(tag.toString())
+
+        viewModel.tagTopAlbums.observe(this) {
+            albumList.addAll(it.album)
+            binding.detailRecyclerView.adapter = AlbumsAdapter(albumList)
+        }
+        binding.detailRecyclerView.layoutManager = GridLayoutManager(this, 2)
+        binding.detailRecyclerView.adapter = albumsAdapter
 
         viewModel.tagInfo.observe(this) {
             binding.tagTitle.text = it.name
@@ -43,7 +49,7 @@ class GenreDetailActivity : AppCompatActivity() {
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab!!.text!! == "ALBUMS"){
-                    viewModel.getTopTags()
+                    viewModel.getTagTopAlbums(tag.toString())
                     viewModel.tagTopAlbums.observe(this@GenreDetailActivity) {
                         albumList.addAll(it.album)
                         binding.detailRecyclerView.adapter = AlbumsAdapter(albumList)

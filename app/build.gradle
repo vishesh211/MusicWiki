@@ -60,4 +60,8 @@ dependencies {
     implementation "se.ansman.kotshi:api:$dep_versions.kotshi"
     kapt "se.ansman.kotshi:compiler:$dep_versions.kotshi"
 
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$dep_versions.glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$dep_versions.glide"
+
 }

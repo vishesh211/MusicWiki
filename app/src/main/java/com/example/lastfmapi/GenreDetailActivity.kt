@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.lastfmapi.adapters.AlbumsAdapter
+import com.example.lastfmapi.adapters.ArtistsAdapter
 import com.example.lastfmapi.databinding.ActivityGenreDetailBinding
 import com.example.lastfmapi.dataclasses.Album
-import com.example.lastfmapi.dataclasses.Albums
 import com.example.lastfmapi.repository.LastFmRepository
 import com.example.lastfmapi.viewmodel.LastFmViewModel
 import com.example.lastfmapi.viewmodel.LastFmViewModelFactory
@@ -53,6 +53,11 @@ class GenreDetailActivity : AppCompatActivity() {
                     viewModel.tagTopAlbums.observe(this@GenreDetailActivity) {
                         albumList.addAll(it.album)
                         binding.detailRecyclerView.adapter = AlbumsAdapter(albumList)
+                    }
+                } else if (tab!!.text!! == "ARTISTS") {
+                    viewModel.getTagTopArtists(tag.toString())
+                    viewModel.tagTopArtists.observe(this@GenreDetailActivity) {
+                        binding.detailRecyclerView.adapter = ArtistsAdapter(it.artist)
                     }
                 }
             }

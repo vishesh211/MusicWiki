@@ -3,9 +3,9 @@ package com.example.lastfmapi.adapters
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.lastfmapi.dataclasses.Track
+import com.example.lastfmapi.dataclasses.Artist
 
-class ArtistsAdapter(val list: MutableList<Track>): RecyclerView.Adapter<ArtistsAdapter.ViewHolder>() {
+class ArtistsAdapter(val list: List<Artist>): RecyclerView.Adapter<ArtistsAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

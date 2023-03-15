@@ -20,6 +20,7 @@ class GenreDetailActivity : AppCompatActivity() {
     private lateinit var viewModel: LastFmViewModel
     var albumList: MutableList<Album> = mutableListOf()
     var albumsAdapter: AlbumsAdapter = AlbumsAdapter(albumList)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGenreDetailBinding.inflate(layoutInflater)
@@ -69,11 +70,9 @@ class GenreDetailActivity : AppCompatActivity() {
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                TODO("Not yet implemented")
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
-                TODO("Not yet implemented")
             }
 
         })

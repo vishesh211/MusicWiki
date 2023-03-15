@@ -24,7 +24,6 @@
             android:textAlignment="center"
             android:gravity="center_horizontal"
             android:textColor="@color/white"
-            android:layout_marginTop="19dp"
             android:textStyle="bold"/>
 
     </androidx.cardview.widget.CardView>

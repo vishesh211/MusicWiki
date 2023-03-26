@@ -69,5 +69,9 @@ dependencies {
     //Dagger-Hilt
     implementation "com.google.dagger:hilt-android:$dep_versions.hilt"
     kapt "com.google.dagger:hilt-compiler:$dep_versions.hilt"
-
+    implementation "androidx.activity:activity-ktx:1.7.0"
+    kapt "androidx.hilt:hilt-compiler:1.0.0"
+}
+kapt {
+    correctErrorTypes true
 }

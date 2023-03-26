@@ -1,27 +1,32 @@
 package com.example.lastfmapi.repository
 
-import com.example.lastfmapi.api.LastFmInstance
+import com.example.lastfmapi.api.LastFmApi
 import com.example.lastfmapi.dataclasses.*
 import retrofit2.Response
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class LastFmRepository {
+@Singleton
+class LastFmRepository @Inject constructor(
+    private val lastFmApi: LastFmApi
+) {
     suspend fun getGenres(): Response<GetTopTags> {
-        return LastFmInstance.lastFmApi.getGenres()
+        return lastFmApi.getGenres()
     }
 
     suspend fun getGenreInfo(tag: String): Response<GetTagInfo> {
-        return LastFmInstance.lastFmApi.getGenreInfo(tag = tag)
+        return lastFmApi.getGenreInfo(tag = tag)
     }
 
     suspend fun getTagTopAlbums(tag: String): Response<GetTopAlbums> {
-        return LastFmInstance.lastFmApi.getTagTopAlbums(tag = tag)
+        return lastFmApi.getTagTopAlbums(tag = tag)
     }
 
     suspend fun getTagTopArtists(tag: String): Response<GetTopArtists> {
-        return LastFmInstance.lastFmApi.getTagTopArtists(tag = tag)
+        return lastFmApi.getTagTopArtists(tag = tag)
     }
 
     suspend fun getTagTopTracks(tag: String): Response<GetTopTracks> {
-        return LastFmInstance.lastFmApi.getTagTopTracks(tag = tag)
+        return lastFmApi.getTagTopTracks(tag = tag)
     }
 }

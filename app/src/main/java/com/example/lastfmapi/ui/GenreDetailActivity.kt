@@ -13,7 +13,9 @@ import com.example.lastfmapi.repository.LastFmRepository
 import com.example.lastfmapi.viewmodel.LastFmViewModel
 import com.example.lastfmapi.viewmodel.LastFmViewModelFactory
 import com.google.android.material.tabs.TabLayout
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class GenreDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGenreDetailBinding

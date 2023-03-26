@@ -11,7 +11,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LastFmViewModel @Inject constructor(private val LastFmRepository: LastFmRepository): ViewModel() {
+class LastFmViewModel @Inject constructor(
+    private val LastFmRepository: LastFmRepository): ViewModel() {
 
     private val _topTags: MutableLiveData<List<TagX>> = MutableLiveData()
     val topTags: LiveData<List<TagX>> = _topTags

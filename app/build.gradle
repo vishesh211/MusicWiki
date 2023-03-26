@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+
 }
 
 android {
@@ -63,5 +65,9 @@ dependencies {
     //Glide
     implementation "com.github.bumptech.glide:glide:$dep_versions.glide"
     annotationProcessor "com.github.bumptech.glide:compiler:$dep_versions.glide"
+
+    //Dagger-Hilt
+    implementation "com.google.dagger:hilt-android:$dep_versions.hilt"
+    kapt "com.google.dagger:hilt-compiler:$dep_versions.hilt"
 
 }

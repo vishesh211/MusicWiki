@@ -6,9 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.lastfmapi.dataclasses.*
 import com.example.lastfmapi.repository.LastFmRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LastFmViewModel(private val LastFmRepository: LastFmRepository): ViewModel() {
+@HiltViewModel
+class LastFmViewModel @Inject constructor(private val LastFmRepository: LastFmRepository): ViewModel() {
 
     private val _topTags: MutableLiveData<List<TagX>> = MutableLiveData()
     val topTags: LiveData<List<TagX>> = _topTags

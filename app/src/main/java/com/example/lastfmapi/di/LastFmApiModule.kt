@@ -12,9 +12,8 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object LastFmApiModule {
-
-    @Provides
     @Singleton
+    @Provides
     fun provideLastFmApi(
     ): LastFmApi = Retrofit.Builder()
         .baseUrl(LastFmApi.URL)

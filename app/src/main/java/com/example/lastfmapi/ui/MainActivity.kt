@@ -2,21 +2,20 @@ package com.example.lastfmapi.ui
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.example.lastfmapi.R
 import com.example.lastfmapi.databinding.ActivityMainBinding
 import com.example.lastfmapi.dataclasses.TagX
-import com.example.lastfmapi.repository.LastFmRepository
 import com.example.lastfmapi.viewmodel.LastFmViewModel
-import com.example.lastfmapi.viewmodel.LastFmViewModelFactory
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: LastFmViewModel
+    private val viewModel: LastFmViewModel by viewModels()
+
     private lateinit var binding: ActivityMainBinding
     private var list: List<TagX> = emptyList()
     private var isListExpanded = false
@@ -26,11 +25,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         createOrRefreshList()
-
-        val lastFmRepository = LastFmRepository()
-        val viewModelFactory = LastFmViewModelFactory(lastFmRepository)
-
-        viewModel = ViewModelProvider(this, viewModelFactory)[LastFmViewModel::class.java]
 
         viewModel.getTopTags()
         viewModel.topTags.observe(this) {

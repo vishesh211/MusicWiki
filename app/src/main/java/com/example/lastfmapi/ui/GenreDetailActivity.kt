@@ -1,25 +1,24 @@
 package com.example.lastfmapi.ui
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.lastfmapi.adapters.AlbumsAdapter
 import com.example.lastfmapi.adapters.ArtistsAdapter
 import com.example.lastfmapi.adapters.TracksAdapter
 import com.example.lastfmapi.databinding.ActivityGenreDetailBinding
 import com.example.lastfmapi.dataclasses.Album
-import com.example.lastfmapi.repository.LastFmRepository
 import com.example.lastfmapi.viewmodel.LastFmViewModel
-import com.example.lastfmapi.viewmodel.LastFmViewModelFactory
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class GenreDetailActivity : AppCompatActivity() {
 
+    private val viewModel: LastFmViewModel by viewModels()
+
     private lateinit var binding: ActivityGenreDetailBinding
-    private lateinit var viewModel: LastFmViewModel
     var albumList: MutableList<Album> = mutableListOf()
     var albumsAdapter: AlbumsAdapter = AlbumsAdapter(albumList)
 
@@ -30,10 +29,6 @@ class GenreDetailActivity : AppCompatActivity() {
 
         val tag = intent.getStringExtra("tag")
 
-
-        val lastFmRepository = LastFmRepository()
-        val viewModelFactory = LastFmViewModelFactory(lastFmRepository)
-        viewModel = ViewModelProvider(this, viewModelFactory)[LastFmViewModel::class.java]
 
         viewModel.getGenreInfo(tag.toString())
         viewModel.getTagTopAlbums(tag.toString())

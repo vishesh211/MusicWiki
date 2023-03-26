@@ -1,4 +1,4 @@
-package com.example.lastfmapi
+package com.example.lastfmapi.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

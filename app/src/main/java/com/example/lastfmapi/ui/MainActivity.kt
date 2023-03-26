@@ -1,9 +1,10 @@
-package com.example.lastfmapi
+package com.example.lastfmapi.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.lastfmapi.R
 import com.example.lastfmapi.databinding.ActivityMainBinding
 import com.example.lastfmapi.dataclasses.TagX
 import com.example.lastfmapi.repository.LastFmRepository

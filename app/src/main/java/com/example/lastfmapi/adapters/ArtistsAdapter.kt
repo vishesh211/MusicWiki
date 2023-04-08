@@ -33,6 +33,7 @@ class ArtistsAdapter(val list: List<Artist>): RecyclerView.Adapter<ArtistsAdapte
         Glide.with(holder.imageView).load(artist.image[i-1].text).into(holder.imageView)
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, ArtistDetailActivity::class.java)
+            intent.putExtra("artist", artist.name)
             it.context.startActivity(intent)
         }
     }

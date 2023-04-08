@@ -1,5 +1,5 @@
 package com.example.lastfmapi.dataclasses
 
 data class TagsX(
-    val tag: List<TagXXX>
+    val tag: List<TagXX>
 )

@@ -1,6 +1,9 @@
 package com.example.lastfmapi.dataclasses
 
+import com.google.gson.annotations.SerializedName
+
 data class StreamableX(
-    val #text: String,
+    @SerializedName("#text")
+    val text: String,
     val fulltrack: String
 )

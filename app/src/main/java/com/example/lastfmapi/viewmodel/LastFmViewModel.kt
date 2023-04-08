@@ -30,7 +30,7 @@ class LastFmViewModel @Inject constructor(
     val tagTopTracks: LiveData<Tracks> = _tagTopTracks
 
     private val _albumInfo: MutableLiveData<AlbumX> = MutableLiveData()
-    val alumInfo: LiveData<AlbumX> = _albumInfo
+    val albumInfo: LiveData<AlbumX> = _albumInfo
     fun getTopTags() {
         viewModelScope.launch {
             val response = LastFmRepository.getGenres()

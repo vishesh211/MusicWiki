@@ -1,5 +1,6 @@
 package com.example.lastfmapi.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lastfmapi.R
 import com.example.lastfmapi.dataclasses.TagXX
+import com.example.lastfmapi.ui.GenreDetailActivity
 
 class AlbumInfoGenreAdapter(val list: List<TagXX>): RecyclerView.Adapter<AlbumInfoGenreAdapter.ViewHolder>() {
     class ViewHolder(itemVIew: View): RecyclerView.ViewHolder(itemVIew) {
@@ -24,5 +26,10 @@ class AlbumInfoGenreAdapter(val list: List<TagXX>): RecyclerView.Adapter<AlbumIn
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val genreName = list[position]
         holder.genreName.text = genreName.name
+        holder.itemView.setOnClickListener {
+            val intent = Intent(it.context, GenreDetailActivity::class.java)
+            intent.putExtra("tag", genreName.name)
+            it.context.startActivity(intent)
+        }
     }
 }

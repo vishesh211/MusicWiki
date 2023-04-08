@@ -35,6 +35,8 @@ class AlbumsAdapter(val list: List<Album>): RecyclerView.Adapter<AlbumsAdapter.V
         Glide.with(holder.imageView).load(album.image[i-1].text).into(holder.imageView)
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, AlbumDetailActivity::class.java)
+            intent.putExtra("album name", album.name)
+            intent.putExtra("artist name", album.artist.name)
             it.context.startActivity(intent)
         }
     }

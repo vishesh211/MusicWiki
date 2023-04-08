@@ -31,6 +31,10 @@ class LastFmViewModel @Inject constructor(
 
     private val _albumInfo: MutableLiveData<AlbumX> = MutableLiveData()
     val albumInfo: LiveData<AlbumX> = _albumInfo
+
+    private val _artistInfo: MutableLiveData<ArtistXXXX> = MutableLiveData()
+    val artistInfo: LiveData<ArtistXXXX> = _artistInfo
+
     fun getTopTags() {
         viewModelScope.launch {
             val response = LastFmRepository.getGenres()
@@ -81,6 +85,15 @@ class LastFmViewModel @Inject constructor(
             val response = LastFmRepository.getAlbumInfo(artist = artist, album = album)
             if (response.isSuccessful) {
                 _albumInfo.value = response.body()?.album
+            }
+        }
+    }
+
+    fun getArtistInfo(artist: String) {
+        viewModelScope.launch {
+            val response = LastFmRepository.getArtistInfo(artist = artist)
+            if (response.isSuccessful) {
+                _artistInfo.value = response.body()?.artist
             }
         }
     }

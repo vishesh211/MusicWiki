@@ -1,5 +1,6 @@
 package com.example.lastfmapi.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.lastfmapi.R
 import com.example.lastfmapi.dataclasses.Artist
+import com.example.lastfmapi.ui.ArtistDetailActivity
 
 class ArtistsAdapter(val list: List<Artist>): RecyclerView.Adapter<ArtistsAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -29,5 +31,9 @@ class ArtistsAdapter(val list: List<Artist>): RecyclerView.Adapter<ArtistsAdapte
         holder.textView.text = artist.name
         val i = artist.image.size
         Glide.with(holder.imageView).load(artist.image[i-1].text).into(holder.imageView)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(it.context, ArtistDetailActivity::class.java)
+            it.context.startActivity(intent)
+        }
     }
 }

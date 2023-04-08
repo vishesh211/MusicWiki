@@ -29,4 +29,8 @@ class LastFmRepository @Inject constructor(
     suspend fun getTagTopTracks(tag: String): Response<GetTopTracks> {
         return lastFmApi.getTagTopTracks(tag = tag)
     }
+
+    suspend fun getAlbumInfo(artist: String, album: String): Response<GetAlbumInfo> {
+        return lastFmApi.getAlbumInfo(artist = artist, album = album)
+    }
 }

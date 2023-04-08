@@ -15,6 +15,9 @@
         android:theme="@style/Theme.LastFmApi"
         tools:targetApi="31">
         <activity
+            android:name=".ui.ArtistDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.AlbumDetailActivity"
             android:exported="false" />
         <activity

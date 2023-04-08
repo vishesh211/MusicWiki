@@ -51,5 +51,6 @@
         android:text="Album Detail"
         android:textSize="20sp"
         android:layout_marginTop="20dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:maxLines="5"/>
 </androidx.appcompat.widget.LinearLayoutCompat>

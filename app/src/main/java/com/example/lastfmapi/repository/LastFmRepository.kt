@@ -33,4 +33,8 @@ class LastFmRepository @Inject constructor(
     suspend fun getAlbumInfo(artist: String, album: String): Response<GetAlbumInfo> {
         return lastFmApi.getAlbumInfo(artist = artist, album = album)
     }
+
+    suspend fun getArtistInfo(artist: String): Response<GetArtistInfo> {
+        return lastFmApi.getArtistInfo(artist = artist)
+    }
 }

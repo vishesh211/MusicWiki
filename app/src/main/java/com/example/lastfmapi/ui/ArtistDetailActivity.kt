@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.lastfmapi.adapters.AlbumInfoGenreAdapter
+import com.example.lastfmapi.adapters.TopTracksAlbumDetailAdapter
 import com.example.lastfmapi.databinding.ActivityArtistDetailBinding
 import com.example.lastfmapi.dataclasses.TagXX
+import com.example.lastfmapi.dataclasses.TrackXX
 import com.example.lastfmapi.viewmodel.LastFmViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +22,8 @@ class ArtistDetailActivity : AppCompatActivity() {
 
     var genreNameList: MutableList<TagXX> = mutableListOf()
     private val albumGenreInfoAdapter: AlbumInfoGenreAdapter = AlbumInfoGenreAdapter(genreNameList)
+    val trackList: MutableList<TrackXX> = mutableListOf()
+    private val topTracksAlbumDetailAdapter: TopTracksAlbumDetailAdapter = TopTracksAlbumDetailAdapter(trackList)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityArtistDetailBinding.inflate(layoutInflater)
@@ -28,6 +32,7 @@ class ArtistDetailActivity : AppCompatActivity() {
         val artist = intent.getStringExtra("artist")
 
         viewModel.getArtistInfo(artist.toString())
+        viewModel.getTopTracksForArtist(artist.toString())
 
         viewModel.artistInfo.observe(this) {
             Glide.with(this).load(it.image[0].text).into(binding.artistInfoImage)
@@ -36,6 +41,12 @@ class ArtistDetailActivity : AppCompatActivity() {
             genreNameList.addAll(it.tags.tag)
             binding.artistInfoRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
             binding.artistInfoRv.adapter = albumGenreInfoAdapter
+        }
+
+        viewModel.toptracks.observe(this) {
+            trackList.addAll(it.track)
+            binding.topTracksArtistRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
+            binding.topTracksArtistRv.adapter = topTracksAlbumDetailAdapter
         }
     }
 }

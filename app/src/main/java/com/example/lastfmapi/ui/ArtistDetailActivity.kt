@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.lastfmapi.adapters.AlbumInfoGenreAdapter
-import com.example.lastfmapi.adapters.TopTracksAlbumDetailAdapter
+import com.example.lastfmapi.adapters.TopAlbumsArtistDetailAdapter
+import com.example.lastfmapi.adapters.TopTracksArtistDetailAdapter
 import com.example.lastfmapi.databinding.ActivityArtistDetailBinding
+import com.example.lastfmapi.dataclasses.AlbumXX
 import com.example.lastfmapi.dataclasses.TagXX
 import com.example.lastfmapi.dataclasses.TrackXX
 import com.example.lastfmapi.viewmodel.LastFmViewModel
@@ -22,8 +24,12 @@ class ArtistDetailActivity : AppCompatActivity() {
 
     var genreNameList: MutableList<TagXX> = mutableListOf()
     private val albumGenreInfoAdapter: AlbumInfoGenreAdapter = AlbumInfoGenreAdapter(genreNameList)
+
     val trackList: MutableList<TrackXX> = mutableListOf()
-    private val topTracksAlbumDetailAdapter: TopTracksAlbumDetailAdapter = TopTracksAlbumDetailAdapter(trackList)
+    private val topTracksArtistDetailAdapter: TopTracksArtistDetailAdapter = TopTracksArtistDetailAdapter(trackList)
+
+    val albumList: MutableList<AlbumXX> = mutableListOf()
+    private val topAlbumsArtistDetailAdapter: TopAlbumsArtistDetailAdapter = TopAlbumsArtistDetailAdapter(albumList)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityArtistDetailBinding.inflate(layoutInflater)
@@ -33,6 +39,7 @@ class ArtistDetailActivity : AppCompatActivity() {
 
         viewModel.getArtistInfo(artist.toString())
         viewModel.getTopTracksForArtist(artist.toString())
+        viewModel.getTopAlbumsForArtist(artist.toString())
 
         viewModel.artistInfo.observe(this) {
             Glide.with(this).load(it.image[0].text).into(binding.artistInfoImage)
@@ -46,7 +53,13 @@ class ArtistDetailActivity : AppCompatActivity() {
         viewModel.toptracks.observe(this) {
             trackList.addAll(it.track)
             binding.topTracksArtistRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
-            binding.topTracksArtistRv.adapter = topTracksAlbumDetailAdapter
+            binding.topTracksArtistRv.adapter = topTracksArtistDetailAdapter
+        }
+
+        viewModel.topAlbums.observe(this) {
+            albumList.addAll(it.album)
+            binding.topAlbumsArtistRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            binding.topAlbumsArtistRv.adapter = topAlbumsArtistDetailAdapter
         }
     }
 }

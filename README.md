@@ -46,5 +46,7 @@ that are listed under the selected genre.
 - Experimented a little bit with UI by not using the exact colors as instructed in the assignment as i thought the present colors provide more contrast and unique look to the UI.
 - Several images in  Artists, Tracks or Top Tracks section could not be loaded due to complication in the Api.
 
+
 ## Demo
-https://user-images.githubusercontent.com/61341524/230778537-5b5a3446-1182-4118-9af2-74949d21215e.mp4
+[https://user-images.githubusercontent.com/61341524/230778537-5b5a3446-1182-4118-9af2-74949d21215e.mp4](https://user-images.githubusercontent.com/61341524/230784919-8ec400a9-4d9a-4fd8-a5af-fd0462465e9c.mp4
+)

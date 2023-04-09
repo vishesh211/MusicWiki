@@ -1,5 +1,5 @@
 # MusicWiki
-- MusicWiki is an  Last.fm application that provides information about various music genres, albums, artists and tracks of a particular genre. It can be used as a **wikipedia** for music infromation by music lovers all across the globe.
+- MusicWiki is an  Last.fm application that provides information about various music genres, albums, artists and tracks of a particular genre. It can be used as a **Wikipedia** for music infromation by music lovers all across the globe.
 
 ## Technologies Used
 

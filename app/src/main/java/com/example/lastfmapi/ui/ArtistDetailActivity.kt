@@ -42,7 +42,7 @@ class ArtistDetailActivity : AppCompatActivity() {
         viewModel.getTopAlbumsForArtist(artist.toString())
 
         viewModel.artistInfo.observe(this) {
-            Glide.with(this).load(it.image[0].text).into(binding.artistInfoImage)
+            Glide.with(this).load(it.image[1].text).into(binding.artistInfoImage)
             binding.artistInfoPlayCountNumber.text = it.stats.playcount
             binding.artistInfoFollowerNumber.text = it.stats.listeners
             genreNameList.addAll(it.tags.tag)

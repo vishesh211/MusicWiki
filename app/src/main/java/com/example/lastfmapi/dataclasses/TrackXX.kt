@@ -1,7 +1,10 @@
 package com.example.lastfmapi.dataclasses
 
+import com.google.gson.annotations.SerializedName
+
 data class TrackXX(
-    val @attr: AttrXXXXXXXXX,
+    @SerializedName("@attr")
+    val attr: AttrXXXXXXXXX,
     val artist: ArtistXXXXXX,
     val image: List<ImageXXXXX>,
     val listeners: String,

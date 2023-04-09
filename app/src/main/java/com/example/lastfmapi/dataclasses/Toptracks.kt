@@ -1,6 +1,9 @@
 package com.example.lastfmapi.dataclasses
 
+import com.google.gson.annotations.SerializedName
+
 data class Toptracks(
-    val @attr: AttrXXXXXXXX,
+    @SerializedName("@attr")
+    val attr: AttrXXXXXXXX,
     val track: List<TrackXX>
 )

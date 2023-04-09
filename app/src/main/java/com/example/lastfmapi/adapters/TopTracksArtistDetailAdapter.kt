@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.lastfmapi.R
 import com.example.lastfmapi.dataclasses.TrackXX
 
-class TopTracksAlbumDetailAdapter(val list: List<TrackXX>): RecyclerView.Adapter<TopTracksAlbumDetailAdapter.ViewHolder>() {
+class TopTracksArtistDetailAdapter(val list: List<TrackXX>): RecyclerView.Adapter<TopTracksArtistDetailAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val trackImage: ImageView = itemView.findViewById(R.id.trackImage)
         val trackTitle: TextView = itemView.findViewById(R.id.trackTitle)
@@ -18,7 +18,7 @@ class TopTracksAlbumDetailAdapter(val list: List<TrackXX>): RecyclerView.Adapter
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.top_tracks_album_detail, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.top_tracks_artist_detail, parent, false))
     }
 
     override fun getItemCount(): Int {

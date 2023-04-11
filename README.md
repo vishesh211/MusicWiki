@@ -22,7 +22,7 @@ This app uses [MVVM (Model View View-Model)] architecture.
 
 ![alt text](https://github.com/KadirKuruca/NewsApp-MVVM-Hilt-Room-Retrofit/blob/master/mvvm_architecture.png?raw=true)
 
-##Features
+## Features
 - The application uses MVVM architecturere and coroutiones to asynchronously call the API.
 - It also uses Hilt-Dagger for dependency injection in the Application.
 - The application starts with MainActivity which displays the genres. Clicking on the toggle icon expands the list of available genres to displays all the 
